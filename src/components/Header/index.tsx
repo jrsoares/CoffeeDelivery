@@ -6,11 +6,10 @@ export function Header() {
   return (
     <HeaderContainer>
       <img src={logo} alt="" />
-
       <Info>
         <a>
           <MapPin size={22} />
-          Porto Alegre, RS
+          Porto Velho, RO
         </a>
         <button>{<ShoppingCart size={22} />}</button>
       </Info>
