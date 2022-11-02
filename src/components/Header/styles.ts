@@ -15,14 +15,20 @@ export const Info = styled.div`
   a {
     display: flex;
     align-items: center;
+    padding: 10px 8px;
     width: 143px;
     height: 38px;
-    padding: 0.5rem;
+
     border-radius: 6px;
     font-size: 0.875rem;
     font-weight: 400;
     color: ${(props) => props.theme["brand-purple-dark"]};
     background: ${(props) => props.theme["brand-purple-light"]};
+
+    svg {
+      color: ${(props) => props.theme["brand-purple"]};
+      margin-right: 7px;
+    }
   }
 
   button {

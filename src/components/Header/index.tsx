@@ -8,10 +8,10 @@ export function Header() {
       <img src={logo} alt="" />
       <Info>
         <a>
-          <MapPin size={22} />
+          <MapPin weight="fill" size={22} />
           Porto Velho, RO
         </a>
-        <button>{<ShoppingCart size={22} />}</button>
+        <button>{<ShoppingCart weight="fill" size={22} />}</button>
       </Info>
     </HeaderContainer>
   );
