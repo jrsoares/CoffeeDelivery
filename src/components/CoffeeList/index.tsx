@@ -132,6 +132,13 @@ const cofees = [
 ];
 
 export function CoffeeList() {
+  function PriceLocaleBr(price: number): string {
+    return price.toLocaleString("pt-br", {
+      currency: "BRL",
+      minimumFractionDigits: 2,
+    });
+  }
+
   return (
     <Container>
       <h1>Nossos cafés</h1>
@@ -154,16 +161,17 @@ export function CoffeeList() {
                 </CardInfo>
                 <CardPrice>
                   <small>
-                    R$<b>{cofee.price}</b>
+                    R$
+                    <b>{PriceLocaleBr(cofee.price)}</b>
                   </small>
                   <Cart>
                     <Counter>
                       <button>
-                        <Minus weight="bold" size={14} />
+                        <Minus weight={"bold"} size={14} />
                       </button>
                       <span>1</span>
                       <button>
-                        <Plus width="bold" size={14} />
+                        <Plus weight={"bold"} size={14} />
                       </button>
                     </Counter>
                     <Button>{<ShoppingCart weight="fill" size={22} />}</Button>
