@@ -1,11 +1,16 @@
 import {
+  Button,
   Card,
   CardInfo,
   CardPrice,
+  Cart,
   Categories,
   Container,
+  Counter,
   List,
 } from "./styles";
+
+import { Minus, Plus, ShoppingCart } from "phosphor-react";
 
 const cofees = [
   {
@@ -135,7 +140,7 @@ export function CoffeeList() {
           return (
             <li key={cofee.id}>
               <Card>
-                <img src={cofee.img} />
+                <img src={cofee.img} alt="" />
                 <Categories>
                   {cofee.categories.map((tag) => (
                     <span key={tag}>
@@ -148,7 +153,21 @@ export function CoffeeList() {
                   <dd>{cofee.description}</dd>
                 </CardInfo>
                 <CardPrice>
-                  <h2>{cofee.price}</h2>
+                  <small>
+                    R$<b>{cofee.price}</b>
+                  </small>
+                  <Cart>
+                    <Counter>
+                      <button>
+                        <Minus weight="bold" size={14} />
+                      </button>
+                      <span>1</span>
+                      <button>
+                        <Plus width="bold" size={14} />
+                      </button>
+                    </Counter>
+                    <Button>{<ShoppingCart weight="fill" size={22} />}</Button>
+                  </Cart>
                 </CardPrice>
               </Card>
             </li>

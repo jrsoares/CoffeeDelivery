@@ -30,13 +30,16 @@ export const Info = styled.div`
       margin-right: 7px;
     }
   }
+`;
 
-  button {
-    border: 0;
-    width: 2.375rem;
-    height: 2.375rem;
-    border-radius: 6px;
-    color: ${(props) => props.theme["brand-yellow-dark"]};
-    background: ${(props) => props.theme["brand-yellow-light"]};
-  }
+export const Button = styled.button`
+  border: 0;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${(props) => props.theme["brand-yellow-dark"]};
+  background: ${(props) => props.theme["brand-yellow-light"]};
 `;
