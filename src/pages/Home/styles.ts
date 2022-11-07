@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Intro = styled.div`
+  height: 544px;
   display: flex;
   padding: 0 10rem;
   margin-top: 5.875rem;
@@ -36,10 +37,10 @@ export const Title = styled.div`
 export const List = styled.ul`
   display: grid;
   grid-template-columns: 231px 1fr;
-  grid-column-gap: 40px;
-  grid-row-gap: 20px;
+  grid-column-gap: 2.5rem;
+  grid-row-gap: 1.25rem;
   list-style: none;
-  width: 567px;
+  width: 35.5rem;
 `;
 
 const ICON_COLORS = {

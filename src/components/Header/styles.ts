@@ -33,6 +33,7 @@ export const Info = styled.div`
 `;
 
 export const Button = styled.button`
+  position: relative;
   border: 0;
   width: 2.375rem;
   height: 2.375rem;
@@ -42,4 +43,19 @@ export const Button = styled.button`
   justify-content: center;
   color: ${(props) => props.theme["brand-yellow-dark"]};
   background: ${(props) => props.theme["brand-yellow-light"]};
+
+  span {
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: ${(props) => props.theme["brand-yellow-dark"]};
+    color: ${(props) => props.theme["base-white"]};
+    border-radius: 1000px;
+ 
+    right: -8.35px;
+    top: -8px;
+    
 `;
