@@ -57,5 +57,5 @@ export const Button = styled.button`
  
     right: -8.35px;
     top: -8px;
-    
+  }
 `;
