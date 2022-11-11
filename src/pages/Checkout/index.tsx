@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Actions,
+  BtnConfirm,
   BtnPayment,
   BtnRemove,
   CartPayment,
@@ -123,7 +124,21 @@ export function Checkout() {
             </Info>
             <span>R$ 9,90</span>
           </CoffeeSelected>
-          <CartPayment></CartPayment>
+          <CartPayment>
+            <div>
+              <span>Total de itens</span>
+              <span>R$ 29,70</span>
+            </div>
+            <div>
+              <span>Entrega</span>
+              <span>R$ 3,50</span>
+            </div>
+            <div className="total">
+              <span>Total</span>
+              <span>R$ 33,20</span>
+            </div>
+            <BtnConfirm>Confirmar</BtnConfirm>
+          </CartPayment>
         </CoffeeCardContainer>
       </div>
     </Container>

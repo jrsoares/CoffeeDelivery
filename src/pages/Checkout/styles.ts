@@ -137,7 +137,7 @@ const Button = styled.button`
   font-size: 0.75rem;
   font-weight: 400;
   border: 0;
-  width: 12rem;
+
   height: 3.125rem;
   border-radius: 6px;
   display: flex;
@@ -146,6 +146,11 @@ const Button = styled.button`
   justify-content: center;
   color: ${(props) => props.theme["base-text"]};
   background: ${(props) => props.theme["base-button"]};
+  transition: 0.2s;
+
+  &:hover {
+    background: ${(props) => props.theme["base--hover"]};
+  }
 `;
 
 export const WrapperPayment = styled.div`
@@ -155,6 +160,7 @@ export const WrapperPayment = styled.div`
 `;
 
 export const BtnPayment = styled(Button)`
+  width: 12rem;
   svg {
     font-size: 1rem;
     color: ${(props) => props.theme["brand-purple"]};
@@ -169,7 +175,7 @@ export const BtnPayment = styled(Button)`
 export const CoffeeCardContainer = styled.div`
   width: 28rem;
   padding: 2.5rem;
-  height: 19.375rem;
+
   background: ${(props) => props.theme["base-card"]};
   border-radius: 6px 36px;
 `;
@@ -253,10 +259,39 @@ export const BtnRemove = styled(Button)`
     color: ${(props) => props.theme["brand-purple"]};
     font-weight: 700;
   }
+`;
 
-  &:hover {
-    background-color: ${(props) => props.theme["base--hover"]};
+export const CartPayment = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-top: 1px solid ${(props) => props.theme["base-button"]};
+  padding-top: 1.5rem;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: ${(props) => props.theme["base-text"]};
+  }
+
+  .total {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: ${(props) => props.theme["base-subtitle"]};
   }
 `;
 
-export const CartPayment = styled.div``;
+export const BtnConfirm = styled(Button)`
+  background: ${(props) => props.theme["brand-yellow"]};
+  color: ${(props) => props.theme["base-white"]};
+  font-weight: 400;
+  font-size: 0.875rem;
+  margin-top: 1.5rem;
+
+  &:hover {
+    background: ${(props) => props.theme["brand-yellow-dark"]};
+  }
+`;
