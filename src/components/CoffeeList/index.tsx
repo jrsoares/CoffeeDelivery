@@ -11,6 +11,7 @@ import {
 } from "./styles";
 
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 const cofees = [
   {
@@ -174,7 +175,9 @@ export function CoffeeList() {
                         <Plus weight={"bold"} size={14} />
                       </button>
                     </Counter>
-                    <Button>{<ShoppingCart weight="fill" size={22} />}</Button>
+                    <Link to={"/checkout"}>
+                      <Button>{<ShoppingCart weight="fill" size={22} />}</Button>
+                    </Link>
                   </Cart>
                 </CardPrice>
               </Card>
