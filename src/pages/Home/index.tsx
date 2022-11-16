@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Intro, Item, List, Title } from "./styles";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import imagemIntro from "../../assets/imagem-intro.svg";
 import { CoffeeList } from "../../components/CoffeeList";
+import { CartContext } from "../../context/CartContext";
 
 export function Home() {
+  const { cart } = useContext(CartContext);
   return (
     <>
       <Intro>

@@ -176,7 +176,9 @@ export function CoffeeList() {
                       </button>
                     </Counter>
                     <Link to={"/checkout"}>
-                      <Button>{<ShoppingCart weight="fill" size={22} />}</Button>
+                      <Button>
+                        {<ShoppingCart weight="fill" size={22} />}
+                      </Button>
                     </Link>
                   </Cart>
                 </CardPrice>
