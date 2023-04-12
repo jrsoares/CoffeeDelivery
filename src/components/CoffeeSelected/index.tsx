@@ -9,7 +9,7 @@ import {
 } from "./styles";
 import { Minus, Plus, Trash } from "phosphor-react";
 import { useCart } from "../../hooks/useCart";
-import { BtnConfirm, CartPayment } from "../../pages/Checkout/styles";
+import { CartPayment } from "../CartPayment";
 
 export function CoffeeSelected() {
   const { cartItems, changeCartItemQuantity, removeCartItem } = useCart();
@@ -63,23 +63,8 @@ export function CoffeeSelected() {
             </CoffeeSelectedItem>
           );
         })}
-
-        <CartPayment>
-          <div>
-            <span>Total de itens</span>
-            <span>R$ 34,00</span>
-          </div>
-          <div>
-            <span>Entrega</span>
-            <span>R$ 3,50</span>
-          </div>
-          <div className="total">
-            <span>Total</span>
-            <span>R$ 33,20</span>
-          </div>
-          <BtnConfirm>Confirmar</BtnConfirm>
-        </CartPayment>
       </CoffeeCardContainer>
+      <CartPayment />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { Coffee } from "../components/CoffeeCard";
 import { produce } from "immer";
 
@@ -8,6 +8,7 @@ export interface CartItem extends Coffee {
 interface CartContextType {
   cartItems: CartItem[];
   cartQuantity: number;
+  cartItemsTotal: number;
   addCoffeeToCart: (coffee: CartItem) => void;
   changeCartItemQuantity: (
     cartItemId: number,
@@ -21,7 +22,15 @@ interface CartContextProviderProps {
 }
 export const CartContext = createContext({} as CartContextType);
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const COFFEE_ITEMS_STORAGE_KEY = "coffeeDelivery:cartItems";
+
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    const storedCartItems = localStorage.getItem(COFFEE_ITEMS_STORAGE_KEY);
+    if (storedCartItems) {
+      return JSON.parse(storedCartItems);
+    }
+    return [];
+  });
   const cartQuantity = cartItems.length;
   function addCoffeeToCart(coffee: CartItem) {
     const coffeAlreadyExistsInCart = cartItems.findIndex(
@@ -53,6 +62,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setCartItems(newCart);
   }
 
+  const cartItemsTotal = cartItems.reduce((total, cartItem) => {
+    return total + cartItem.price * cartItem.quantity;
+  }, 0);
+
   function removeCartItem(cartItemId: number) {
     const newCart = produce(cartItems, (draft) => {
       const coffeeExistsInCart = cartItems.findIndex(
@@ -64,11 +77,17 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     });
     setCartItems(newCart);
   }
+
+  useEffect(() => {
+    localStorage.setItem(COFFEE_ITEMS_STORAGE_KEY, JSON.stringify(cartItems));
+  }, [cartItems]);
+
   return (
     <CartContext.Provider
       value={{
         cartItems,
         cartQuantity,
+        cartItemsTotal,
         addCoffeeToCart,
         changeCartItemQuantity,
         removeCartItem,
