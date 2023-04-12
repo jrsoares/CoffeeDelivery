@@ -1,17 +1,9 @@
 import React from "react";
 import {
-  Actions,
-  BtnConfirm,
   BtnPayment,
-  BtnRemove,
-  CartPayment,
   CheckoutForm,
-  CoffeeCardContainer,
-  CoffeeSelected,
   Container,
-  Counter,
   Form,
-  Info,
   Payment,
   WrapperForm,
   WrapperPayment,
@@ -22,11 +14,10 @@ import {
   CreditCard,
   CurrencyDollar,
   MapPin,
-  Minus,
   Money,
-  Plus,
-  Trash,
 } from "phosphor-react";
+
+import { CoffeeSelected } from "../../components/CoffeeSelected";
 
 export function Checkout() {
   return (
@@ -73,74 +64,7 @@ export function Checkout() {
           </WrapperPayment>
         </Payment>
       </CheckoutForm>
-      <div>
-        <h1>Cafés selecionados</h1>
-        <CoffeeCardContainer>
-          <CoffeeSelected>
-            <Info>
-              <img src="src/assets/img/Type=Expresso.svg" alt="" />
-              <div>
-                <span>Expresso Tradicional</span>
-                <Actions>
-                  <Counter>
-                    <button>
-                      <Minus weight={"bold"} size={14} />
-                    </button>
-                    <span>1</span>
-                    <button>
-                      <Plus weight={"bold"} size={14} />
-                    </button>
-                  </Counter>
-                  <BtnRemove>
-                    <Trash />
-                    REMOVER
-                  </BtnRemove>
-                </Actions>
-              </div>
-            </Info>
-            <span>R$ 9,90</span>
-          </CoffeeSelected>
-          <CoffeeSelected>
-            <Info>
-              <img src="src/assets/img/Type=Expresso.svg" alt="" />
-              <div>
-                <span>Expresso Tradicional</span>
-                <Actions>
-                  <Counter>
-                    <button>
-                      <Minus weight={"bold"} size={14} />
-                    </button>
-                    <span>1</span>
-                    <button>
-                      <Plus weight={"bold"} size={14} />
-                    </button>
-                  </Counter>
-                  <BtnRemove>
-                    <Trash />
-                    REMOVER
-                  </BtnRemove>
-                </Actions>
-              </div>
-            </Info>
-            <span>R$ 9,90</span>
-          </CoffeeSelected>
-          <CartPayment>
-            <div>
-              <span>Total de itens</span>
-              <span>R$ 29,70</span>
-            </div>
-            <div>
-              <span>Entrega</span>
-              <span>R$ 3,50</span>
-            </div>
-            <div className="total">
-              <span>Total</span>
-              <span>R$ 33,20</span>
-            </div>
-            <BtnConfirm>Confirmar</BtnConfirm>
-          </CartPayment>
-        </CoffeeCardContainer>
-      </div>
+      <CoffeeSelected />
     </Container>
   );
 }

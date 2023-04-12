@@ -12,7 +12,7 @@ export const Info = styled.div`
   width: 12rem;
   justify-content: space-between;
 
-  a {
+  div {
     display: flex;
     align-items: center;
     padding: 10px 8px;
@@ -34,6 +34,7 @@ export const Info = styled.div`
 
 export const Button = styled.button`
   position: relative;
+  cursor: pointer;
   border: 0;
   width: 2.375rem;
   height: 2.375rem;
@@ -54,7 +55,7 @@ export const Button = styled.button`
     background: ${(props) => props.theme["brand-yellow-dark"]};
     color: ${(props) => props.theme["base-white"]};
     border-radius: 1000px;
- 
+
     right: -8.35px;
     top: -8px;
   }
