@@ -1,19 +1,7 @@
-import {
-  Button,
-  Card,
-  CardInfo,
-  CardPrice,
-  Cart,
-  Categories,
-  Container,
-  Counter,
-  List,
-} from "./styles";
+import { Container, List } from "./styles";
+import { CoffeeCard } from "../CoffeeCard";
 
-import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { Link } from "react-router-dom";
-
-const cofees = [
+export const coffees = [
   {
     id: 1,
     img: "src/assets/img/Type=Expresso.svg",
@@ -133,59 +121,13 @@ const cofees = [
 ];
 
 export function CoffeeList() {
-  function PriceLocaleBr(price: number): string {
-    return price.toLocaleString("pt-br", {
-      currency: "BRL",
-      minimumFractionDigits: 2,
-    });
-  }
-
   return (
     <Container>
       <h1>Nossos cafés</h1>
       <List>
-        {cofees.map((cofee) => {
-          return (
-            <li key={cofee.id}>
-              <Card>
-                <img src={cofee.img} alt="" />
-                <Categories>
-                  {cofee.categories.map((tag) => (
-                    <span key={tag}>
-                      <small>{tag}</small>
-                    </span>
-                  ))}
-                </Categories>
-                <CardInfo>
-                  <h1>{cofee.title}</h1>
-                  <dd>{cofee.description}</dd>
-                </CardInfo>
-                <CardPrice>
-                  <small>
-                    R$
-                    <b>{PriceLocaleBr(cofee.price)}</b>
-                  </small>
-                  <Cart>
-                    <Counter>
-                      <button>
-                        <Minus weight={"bold"} size={14} />
-                      </button>
-                      <span>1</span>
-                      <button>
-                        <Plus weight={"bold"} size={14} />
-                      </button>
-                    </Counter>
-                    <Link to={"/checkout"}>
-                      <Button>
-                        {<ShoppingCart weight="fill" size={22} />}
-                      </Button>
-                    </Link>
-                  </Cart>
-                </CardPrice>
-              </Card>
-            </li>
-          );
-        })}
+        {coffees.map((coffee) => (
+          <CoffeeCard key={coffee.id} coffee={coffee} />
+        ))}
       </List>
     </Container>
   );
