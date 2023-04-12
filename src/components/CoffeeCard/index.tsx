@@ -1,14 +1,9 @@
-import {
-  Button,
-  Card,
-  CardInfo,
-  CardPrice,
-  Cart,
-  Categories,
-  Counter,
-} from "./styles";
+import { Button, Card, CardInfo, CardPrice, Cart, Categories } from "./styles";
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { Link } from "react-router-dom";
+import { useCart } from "../../hooks/useCart";
+import { useState } from "react";
+import { QuantityInput } from "../QuantityInput";
 
 export interface Coffee {
   id: number;
@@ -23,12 +18,32 @@ interface CoffeeProps {
   coffee: Coffee;
 }
 export function CoffeeCard({ coffee }: CoffeeProps) {
+  const [quantity, setQuantity] = useState(1);
+  function handleIncrease() {
+    setQuantity((state) => state + 1);
+  }
+
+  function handleDecrease() {
+    setQuantity((state) => state - 1);
+  }
+
   function PriceLocaleBr(price: number): string {
     return price.toLocaleString("pt-br", {
       currency: "BRL",
       minimumFractionDigits: 2,
     });
   }
+
+  const { addCoffeeToCart } = useCart();
+
+  function handleAddCart() {
+    const coffeeToAdd = {
+      ...coffee,
+      quantity: 1,
+    };
+    addCoffeeToCart(coffeeToAdd);
+  }
+
   return (
     <Card>
       <img src={coffee.img} alt="" />
@@ -49,18 +64,14 @@ export function CoffeeCard({ coffee }: CoffeeProps) {
           <b>{PriceLocaleBr(coffee.price)}</b>
         </small>
         <Cart>
-          <Counter>
-            <button>
-              <Minus weight={"bold"} size={14} />
-            </button>
-            <span>1</span>
-            <button>
-              <Plus weight={"bold"} size={14} />
-            </button>
-          </Counter>
-          <Link to={"/checkout"}>
-            <Button>{<ShoppingCart weight="fill" size={22} />}</Button>
-          </Link>
+          <QuantityInput
+            quantity={quantity}
+            onDecrease={handleDecrease}
+            onIncrease={handleIncrease}
+          />
+          <Button onClick={handleAddCart}>
+            {<ShoppingCart weight="fill" size={22} />}
+          </Button>
         </Cart>
       </CardPrice>
     </Card>
