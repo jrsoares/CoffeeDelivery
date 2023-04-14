@@ -73,9 +73,7 @@ export const Counter = styled.div`
 `;
 export const BtnRemove = styled(Button)`
   width: 91px;
-  height: 32px;
-
-  svg {
+  height: 32px svg {
     color: ${(props) => props.theme["brand-purple"]};
     font-weight: 700;
   }
@@ -87,4 +85,21 @@ export const CoffeeCardContainer = styled.div`
 
   background: ${(props) => props.theme["base-card"]};
   border-radius: 6px 36px;
+
+  .items {
+    border-top: 1px solid #ccc;
+    padding-top: 24px;
+  }
+
+  .items-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    font-weight: 400;
+    color: ${(props) => props.theme["base-text"]};
+  }
+  .total {
+    color: ${(props) => props.theme["base-subtitle"]};
+    font-weight: 700;
+  }
 `;

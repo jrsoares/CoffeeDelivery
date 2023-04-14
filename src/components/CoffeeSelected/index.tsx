@@ -9,17 +9,20 @@ import {
 } from "./styles";
 import { Minus, Plus, Trash } from "phosphor-react";
 import { useCart } from "../../hooks/useCart";
-import { CartPayment } from "../CartPayment";
+import { formatMoney } from "../../utils/formatMoney";
 
+const DELIVERY_PRICE = 3.5;
 export function CoffeeSelected() {
-  const { cartItems, changeCartItemQuantity, removeCartItem } = useCart();
+  const {
+    cartItems,
+    changeCartItemQuantity,
+    removeCartItem,
+    cartItemsTotal,
+    cartQuantity,
+  } = useCart();
+  const cartTotal = DELIVERY_PRICE + cartItemsTotal;
 
-  function PriceLocaleBr(price: number): string {
-    return price.toLocaleString("pt-br", {
-      currency: "BRL",
-      minimumFractionDigits: 2,
-    });
-  }
+  const formattedItemsTotal = formatMoney(cartTotal);
 
   return (
     <div>
@@ -59,12 +62,25 @@ export function CoffeeSelected() {
                   </Actions>
                 </div>
               </Info>
-              <span>R$ {PriceLocaleBr(totalItems)}</span>
+              <span>R$ {formatMoney(totalItems)}</span>
             </CoffeeSelectedItem>
           );
         })}
+        <div className="items">
+          <div className="items-info">
+            <span>Total de itens</span>
+            <span>R$ {formatMoney(cartItemsTotal)} </span>
+          </div>
+          <div className="items-info">
+            <span>Entrega</span>
+            <span>R$ {formatMoney(DELIVERY_PRICE)}</span>
+          </div>
+          <div className="total items-info">
+            <span>Total</span>
+            {cartQuantity > 0 && <span>R$ {formattedItemsTotal}</span>}
+          </div>
+        </div>
       </CoffeeCardContainer>
-      <CartPayment />
     </div>
   );
 }
